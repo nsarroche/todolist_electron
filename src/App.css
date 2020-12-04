@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 .App-logo {
@@ -14,25 +21,210 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 100%;;
+  font-size: calc(10px + 2vmin);
+  margin-bottom: 12px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 90vh;
+  font-size: calc(5px + 2vmin);
+}
+
+
+
+.content .left, .content .right {
+  display: flex;
+  flex-grow: 1;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  margin: 0 8px;
+}
+
+.content .left {
+  padding: 12px;
+  width: 40%;
+}
+.content .right {
+  padding: 20px;
+  width: 60%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.content .left .todo-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+
+.content .left input, .content .left textarea {
+  background-color: lightgray;
+  border-radius: 6px;
+  min-height: 30px;
+  padding: 0 15px;
+}
+
+.content .left textarea {
+  resize: vertical;
+  padding: 15px;
+}
+
+.content .left label {
+  margin-top: 12px;
+}
+
+.content .left .todo-form-submit {
+  margin-top: 12px;
+  height: 50px;
+  font-size: calc(10px + 2vmin);
+  border-radius: 10px;
+  background-color: #3838ff;
+  color: white;
+  border: 1px solid white;
+}
+
+.content .left .todo-form-submit:disabled {
+  color: black;
+  background-color: #cd3737;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.content .right table {
+  width: calc(100% - 20px);
+  border: 1px solid white;
+  border-collapse: collapse;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+}
+
+
+.content .right th {
+  border: 1px solid white;
+  background-color: #888;
+}
+
+.content .right th div {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.content .right th div {
+  padding: 0 15px;
+}
+.content .right th div button {
+  margin-left: 15px ;
 }
 
-.App-link {
-  color: #61dafb;
+.content .right th div button.sort-asc svg {
+  transform: rotate(-90deg)
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.content .right th div button.sort-desc svg{
+  transform: rotate(90deg)
+}
+
+.content .right th div button {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: unset;
+  border: none;
+}
+
+.content .right th div button:hover, .content .right th div button:active, .content .right th div button:focus {
+  background-color: unset;
+  border: 1px solid white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.content .right th button svg {
+  width: 13px;
+  height: 13px;
+  display: flex;
+}
+
+.content .right td {
+  border: 1px solid white;
+  border-collapse: collapse;
+  min-height: 25px;
+}
+:root {
+  --row-border-size: 2px;
+}
+.content .right .row_one {
+  border-left: var(--row-border-size) solid white;
+  border-top: var(--row-border-size)  solid white;
+  border-right: var(--row-border-size)  solid white;
+  background-color: darkgray;
+}
+
+.content .right .row_two {
+  border-left: var(--row-border-size)  solid white;
+  border-right: var(--row-border-size)  solid white;
+  border-bottom: var(--row-border-size)  solid white;
+  background-color: darkgray;
+}
+
+.content .right .row_two td {
+  text-align: left;
+  padding: 5px 20px;
+  font-size: large;
+  background-color: darkgray;
+}
+
+.content .right td.strike {
+  text-decoration: line-through;
+  background-color: lightgrey;
+}
+
+.content .right td .delete,  .content .right td .complete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+}
+
+.content .right td .delete:hover, .content .right td .delete:focus {
+  border: 1px solid red;
+}
+
+.content .right td .delete svg {
+  fill:red;
+  height: 16px;
+  width: 16px;
+}
+
+.content .right td .complete:hover, .content .right td .complete:focus {
+  border: 1px solid forestgreen;
+}
+
+.content .right td .complete svg {
+  fill:forestgreen;
+  height: 16px;
+  width: 16px;
+}
+
+.content .right td .complete:disabled {
+  border: none;
+  cursor: not-allowed;
+}
+
+.content .right td .complete:disabled svg {
+  fill: darkgray;
 }
